@@ -21,4 +21,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "AVIV Android Test"
-include(":app")
+
+listOf(
+    "core:domain",
+    "core:data",
+    "core:ui",
+    "core:model",
+    "app",
+).forEach { moduleName -> include(":$moduleName") }

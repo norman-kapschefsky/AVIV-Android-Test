@@ -1,4 +1,4 @@
-package de.kapschefsky.android.aviv.test.ui.theme
+package de.kapschefsky.android.aviv.test.app.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

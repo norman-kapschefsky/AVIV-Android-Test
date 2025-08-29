@@ -2,7 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -20,8 +23,12 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+        }
+
+        release {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
@@ -35,6 +42,7 @@ android {
     }
 
     kotlinOptions {
+        @Suppress("DEPRECATION")
         jvmTarget = "11"
     }
 
@@ -44,18 +52,37 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+
+    listOf(
+        libs.androidx.core.ktx,
+        libs.androidx.lifecycle.runtime.ktx,
+        libs.androidx.activity.compose,
+        libs.androidx.ui,
+        libs.androidx.ui.graphics,
+        libs.androidx.ui.tooling.preview,
+        libs.androidx.material3,
+        libs.dagger.hilt.android,
+        libs.kotlin.coroutines,
+        libs.arrow.core,
+    ).forEach { library ->
+        implementation(library)
+    }
+
+    ksp(libs.dagger.hilt.compiler)
+
+    listOf(
+        "core:domain",
+        "core:model",
+        "core:ui",
+    ).forEach { moduleName ->
+        implementation(project(":$moduleName"))
+    }
+
     testImplementation(libs.junit)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
