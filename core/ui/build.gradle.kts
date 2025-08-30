@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -36,9 +37,18 @@ android {
         @Suppress("DEPRECATION")
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+    implementation(platform(libs.androidx.compose.bom))
+
+    listOf(
+        libs.androidx.core.ktx,
+        libs.androidx.appcompat,
+        libs.androidx.material3,
+    ).forEach(::implementation)
 }

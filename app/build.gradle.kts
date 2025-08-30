@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -62,9 +63,15 @@ dependencies {
         libs.androidx.ui.graphics,
         libs.androidx.ui.tooling.preview,
         libs.androidx.material3,
+        libs.androidx.material3.windowsizeclass,
         libs.dagger.hilt.android,
         libs.kotlin.coroutines,
         libs.arrow.core,
+        libs.androidx.adaptive.layout,
+        libs.androidx.material3.navigation3,
+        libs.androidx.navigation3.runtime,
+        libs.androidx.navigation3.ui,
+        libs.androidx.hilt.navigation.compose,
     ).forEach { library ->
         implementation(library)
     }

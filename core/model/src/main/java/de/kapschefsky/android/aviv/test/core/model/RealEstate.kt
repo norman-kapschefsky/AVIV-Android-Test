@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class RealEstate(
-    val id: Int,
+    val id: RealEstateId,
     val bedrooms: Int,
     val city: String,
     val area: Int,

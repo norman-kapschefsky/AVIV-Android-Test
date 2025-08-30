@@ -7,6 +7,7 @@ import de.kapschefsky.android.aviv.test.core.data.repository.RealEstateRepositor
 import de.kapschefsky.android.aviv.test.core.domain.mapper.RealEstateApiMapper
 import de.kapschefsky.android.aviv.test.core.model.RealEstate
 import de.kapschefsky.android.aviv.test.core.model.RealEstateError
+import de.kapschefsky.android.aviv.test.core.model.RealEstateId
 import de.kapschefsky.android.aviv.test.core.model.RealEstateListItem
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,7 +26,7 @@ class RealEstateUseCases @Inject constructor(
             ifRight = { realEstateApiMapper.mapRealEstateApiListItemsToDomain(it).right() }
         )
 
-    suspend fun getRealEstate(id: Int): Either<RealEstateError, RealEstate> =
+    suspend fun getRealEstate(id: RealEstateId): Either<RealEstateError, RealEstate> =
         realEstateRepository.getRealEstate(id = id).fold(
             ifLeft = {
                 // TODO Error handling

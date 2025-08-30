@@ -1,4 +1,4 @@
-package de.kapschefsky.android.aviv.test.app.theme
+package de.kapschefsky.android.aviv.test.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
