@@ -67,8 +67,14 @@ fun MainActivityUi() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "AVIV Android Test") },
-                colors = TopAppBarDefaults.topAppBarColors(MaterialTheme.colorScheme.primaryContainer),
+                title = {
+                    Text(
+                        text = "AVIV Android Test",
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        style = MaterialTheme.typography.headlineLarge,
+                    )
+                },
+                colors = TopAppBarDefaults.topAppBarColors(MaterialTheme.colorScheme.primary),
             )
         },
         content = { contentPadding ->

@@ -5,6 +5,7 @@ import arrow.core.left
 import arrow.core.right
 import de.kapschefsky.android.aviv.test.core.data.api.model.ApiError
 import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiListItem
+import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiModel
 import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateListingResponse
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,10 +15,21 @@ import retrofit2.Response
 internal class RealEstateApiResponseMapper @Inject constructor() {
 
     fun mapListingResponse(
-        response: Response<RealEstateListingResponse>)
-    : Either<ApiError, List<RealEstateApiListItem>> =
+        response: Response<RealEstateListingResponse>
+    ): Either<ApiError, List<RealEstateApiListItem>> =
         if (response.isSuccessful) {
             response.body()?.items?.right() ?: emptyList<RealEstateApiListItem>().right()
+        } else {
+            // TODO Error handling
+            ApiError.General.left()
+        }
+
+    fun mapRealEstateApiModelResponse(
+        response: Response<RealEstateApiModel>
+    ): Either<ApiError, RealEstateApiModel> =
+        if (response.isSuccessful) {
+            // TODO Error handling
+            response.body()?.right() ?: ApiError.General.left()
         } else {
             // TODO Error handling
             ApiError.General.left()

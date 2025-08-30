@@ -21,5 +21,7 @@ internal class RealEstateRepositoryImpl @Inject constructor(
            .let(realEstateApiResponseMapper::mapListingResponse)
 
     override suspend fun getRealEstate(id: Int): Either<ApiError, RealEstateApiModel> =
-        ApiError.General.left()
+        realEstateApi.getRealEstateListing(id)
+            .execute()
+            .let(realEstateApiResponseMapper::mapRealEstateApiModelResponse)
 }

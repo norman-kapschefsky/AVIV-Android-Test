@@ -72,6 +72,9 @@ dependencies {
         libs.androidx.navigation3.runtime,
         libs.androidx.navigation3.ui,
         libs.androidx.hilt.navigation.compose,
+        libs.coil.compose,
+        libs.coil.network,
+        libs.androidx.material.icons.extended,
     ).forEach { library ->
         implementation(library)
     }

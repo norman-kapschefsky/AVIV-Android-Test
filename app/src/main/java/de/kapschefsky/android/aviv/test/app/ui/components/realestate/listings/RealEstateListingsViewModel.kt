@@ -35,7 +35,13 @@ class RealEstateListingsViewModel
                                     estateListItems.map { estateListItem ->
                                         RealEstateListItemUiModel(
                                             id = estateListItem.id,
+                                            name = estateListItem.propertyType,
                                             url = estateListItem.url,
+                                            city = estateListItem.city,
+                                            area = estateListItem.area,
+                                            price = estateListItem.price,
+                                            rooms = estateListItem.rooms,
+                                            bedrooms = estateListItem.bedrooms,
                                         )
                                     },
                             )

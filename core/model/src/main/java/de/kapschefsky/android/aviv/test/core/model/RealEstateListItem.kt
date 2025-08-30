@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class RealEstateListItem(
     val id: RealEstateId,
-    val bedrooms: Int,
+    val bedrooms: Int?,
     val city: String,
     val area: Int,
     val url: String?,
@@ -14,5 +14,5 @@ data class RealEstateListItem(
     val professional: String,
     val propertyType: String,
     val offerType: Int,
-    val rooms: Int
+    val rooms: Int?
 ): Parcelable
