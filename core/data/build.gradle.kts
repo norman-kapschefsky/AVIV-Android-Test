@@ -47,9 +47,7 @@ dependencies {
         libs.retrofit.converter.gson,
         libs.arrow.core,
         libs.dagger.hilt.android,
-    ).forEach { library ->
-        implementation(library)
-    }
+    ).forEach(::implementation)
 
     ksp(libs.dagger.hilt.compiler)
 }

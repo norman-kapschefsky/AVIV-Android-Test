@@ -32,18 +32,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import de.kapschefsky.android.aviv.test.R
-import de.kapschefsky.android.aviv.test.app.ui.components.common.ErrorInfoBox
-import de.kapschefsky.android.aviv.test.app.ui.components.common.IconLabel
-import de.kapschefsky.android.aviv.test.app.ui.components.common.RemoteImage
+import de.kapschefsky.android.aviv.test.core.ui.components.ErrorBox
 import de.kapschefsky.android.aviv.test.core.ui.components.Headline
+import de.kapschefsky.android.aviv.test.core.ui.components.IconLabel
 import de.kapschefsky.android.aviv.test.core.ui.components.LoadingIndicator
+import de.kapschefsky.android.aviv.test.core.ui.components.RemoteImage
 import de.kapschefsky.android.aviv.test.core.ui.theme.clickableRipple
 
 @Composable
 fun RealEstateListingsUi(
     modifier: Modifier = Modifier,
     viewModel: RealEstateListingsViewModel = hiltViewModel(),
-    onRealEstateItemClicked: (RealEstateListItemUiModel) -> Unit,
+    onRealEstateItemClicked: (RealEstateListingsItemUiModel) -> Unit,
 ) {
     val uiState = viewModel.uiState.collectAsState()
 
@@ -59,7 +59,7 @@ fun RealEstateListingsUi(
 
         when (val state = uiState.value) {
             RealEstateListingsUiState.Loading ->
-                LoadingIndicator(containerModifier = Modifier.fillMaxSize())
+                LoadingIndicator(modifier = Modifier.fillMaxSize())
 
             is RealEstateListingsUiState.RealEstateListings ->
                 ListingsUi(
@@ -68,7 +68,7 @@ fun RealEstateListingsUi(
                 )
 
             is RealEstateListingsUiState.Error.Loading ->
-                ErrorInfoBox(
+                ErrorBox(
                     modifier = Modifier.padding(horizontal = 16.dp),
                     text = stringResource(R.string.real_estate_listings_error_loading_general),
                     buttonLabel = stringResource(R.string.button_error_retry),
@@ -80,8 +80,8 @@ fun RealEstateListingsUi(
 
 @Composable
 private fun ListingsUi(
-    items: List<RealEstateListItemUiModel>,
-    onRealEstateItemClicked: (RealEstateListItemUiModel) -> Unit,
+    items: List<RealEstateListingsItemUiModel>,
+    onRealEstateItemClicked: (RealEstateListingsItemUiModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -123,8 +123,8 @@ private fun ListingsUi(
 
                     listOf(
                         Icons.Filled.LocationOn to item.city,
-                        Icons.Filled.Square to item.area.toString(),
-                        Icons.Filled.EuroSymbol to item.price.toString(),
+                        Icons.Filled.Square to item.areaLabel,
+                        Icons.Filled.EuroSymbol to item.priceLabel,
                         Icons.Filled.MeetingRoom to item.rooms?.toString(),
                         Icons.Filled.Bed to item.bedrooms?.toString(),
                     ).forEach { (vectorImage, label) ->

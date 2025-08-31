@@ -4,9 +4,9 @@ import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
 import de.kapschefsky.android.aviv.test.core.data.api.model.ApiError
-import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiListItem
+import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateListingsApiItem
 import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiModel
-import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateListingResponse
+import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateListingsResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 import retrofit2.Response
@@ -14,24 +14,21 @@ import retrofit2.Response
 @Singleton
 internal class RealEstateApiResponseMapper @Inject constructor() {
 
-    fun mapListingResponse(
-        response: Response<RealEstateListingResponse>
-    ): Either<ApiError, List<RealEstateApiListItem>> =
+    fun mapRealEstateListingResponse(
+        response: Response<RealEstateListingsResponse>
+    ): Either<ApiError, List<RealEstateListingsApiItem>> =
         if (response.isSuccessful) {
-            response.body()?.items?.right() ?: emptyList<RealEstateApiListItem>().right()
+            response.body()?.items?.right() ?: ApiError.EmptyResponse.left()
         } else {
-            // TODO Error handling
-            ApiError.General.left()
+            ApiError.General(responseCode = response.code()).left()
         }
 
     fun mapRealEstateApiModelResponse(
         response: Response<RealEstateApiModel>
     ): Either<ApiError, RealEstateApiModel> =
         if (response.isSuccessful) {
-            // TODO Error handling
-            response.body()?.right() ?: ApiError.General.left()
+            response.body()?.right() ?: ApiError.EmptyResponse.left()
         } else {
-            // TODO Error handling
-            ApiError.General.left()
+            ApiError.General(responseCode = response.code()).left()
         }
 }

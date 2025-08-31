@@ -51,5 +51,11 @@ dependencies {
         libs.androidx.appcompat,
         libs.androidx.material3,
         libs.androidx.ui.tooling.preview,
+        libs.coil.network,
     ).forEach(::implementation)
+
+    listOf(
+        libs.androidx.material.icons.extended,
+        libs.coil.compose,
+    ).forEach(::api)
 }

@@ -2,13 +2,13 @@ package de.kapschefsky.android.aviv.test.app.ui.components.realestate.listings
 
 import de.kapschefsky.android.aviv.test.core.model.RealEstateId
 
-data class RealEstateListItemUiModel(
+data class RealEstateListingsItemUiModel(
     val id: RealEstateId,
     val name: String,
     val url: String?,
     val city: String,
-    val area: Int,
-    val price: Int,
+    val areaLabel: String?,
+    val priceLabel: String?,
     val rooms: Int?,
     val bedrooms: Int?,
 )

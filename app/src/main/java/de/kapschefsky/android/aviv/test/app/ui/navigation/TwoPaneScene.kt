@@ -1,4 +1,4 @@
-package de.kapschefsky.android.aviv.test.app.ui.components.common
+package de.kapschefsky.android.aviv.test.app.ui.navigation
 
 import androidx.annotation.FloatRange
 import androidx.compose.foundation.layout.Column

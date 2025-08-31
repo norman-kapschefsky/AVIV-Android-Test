@@ -6,7 +6,7 @@ sealed class RealEstateListingsUiState {
     data object Loading : RealEstateListingsUiState()
 
     data class RealEstateListings(
-        val items: List<RealEstateListItemUiModel>,
+        val items: List<RealEstateListingsItemUiModel>,
     ) : RealEstateListingsUiState()
 
     sealed class Error : RealEstateListingsUiState() {

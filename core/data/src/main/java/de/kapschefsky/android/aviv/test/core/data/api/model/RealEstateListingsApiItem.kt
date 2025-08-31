@@ -1,6 +1,6 @@
 package de.kapschefsky.android.aviv.test.core.data.api.model
 
-data class RealEstateApiListItem(
+data class RealEstateListingsApiItem(
     val id: Int,
     val bedrooms: Int?,
     val city: String,

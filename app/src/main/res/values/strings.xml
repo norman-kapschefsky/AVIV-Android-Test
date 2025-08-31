@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">AVIV Coding Challenge</string>
-    <string name="toolbar_title">AVIV Coding Challenge</string>
+    <string name="app_name">Coding Challenge</string>
+    <string name="toolbar_title">Coding Challenge</string>
     <string name="real_estate_listings_headline">Real Estate Listings</string>#
     <string name="real_estate_listings_error_loading_general">An error occurred while loading real estate listings.</string>#
     <string name="button_error_retry">Retry</string>

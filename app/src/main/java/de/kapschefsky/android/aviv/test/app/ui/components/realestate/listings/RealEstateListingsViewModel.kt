@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.listings.RealEstateListingsUiState.Loading
+import de.kapschefsky.android.aviv.test.app.ui.mapper.AreaUiMapper
+import de.kapschefsky.android.aviv.test.app.ui.mapper.PriceUiMapper
 import de.kapschefsky.android.aviv.test.core.domain.common.CoroutineDispatcherProvider
 import de.kapschefsky.android.aviv.test.core.domain.usecases.RealEstateUseCases
 import kotlinx.coroutines.CoroutineScope
@@ -18,6 +20,8 @@ class RealEstateListingsViewModel
     constructor(
         private val realEstateUseCases: RealEstateUseCases,
         private val coroutineDispatcherProvider: CoroutineDispatcherProvider,
+        private val priceUiMapper: PriceUiMapper,
+        private val areaUiMapper: AreaUiMapper,
     ) : ViewModel() {
         private val _uiState: MutableStateFlow<RealEstateListingsUiState> = MutableStateFlow(Loading)
         val uiState: StateFlow<RealEstateListingsUiState> = _uiState
@@ -33,13 +37,21 @@ class RealEstateListingsViewModel
                             RealEstateListingsUiState.RealEstateListings(
                                 items =
                                     estateListItems.map { estateListItem ->
-                                        RealEstateListItemUiModel(
+                                        RealEstateListingsItemUiModel(
                                             id = estateListItem.id,
                                             name = estateListItem.propertyType,
                                             url = estateListItem.url,
                                             city = estateListItem.city,
-                                            area = estateListItem.area,
-                                            price = estateListItem.price,
+                                            areaLabel =
+                                                areaUiMapper.mapToDisplayableArea(
+                                                    areaValue = estateListItem.area,
+                                                    areaMeasureUnit = estateListItem.areaMeasureUnit,
+                                                ),
+                                            priceLabel =
+                                                priceUiMapper.mapToDisplayablePrice(
+                                                    priceValue = estateListItem.price,
+                                                    priceCurrencyCode = estateListItem.priceCurrencyCode,
+                                                ),
                                             rooms = estateListItem.rooms,
                                             bedrooms = estateListItem.bedrooms,
                                         )

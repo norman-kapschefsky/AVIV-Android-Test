@@ -32,12 +32,12 @@ import androidx.navigation3.ui.LocalNavAnimatedContentScope
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import de.kapschefsky.android.aviv.test.R
-import de.kapschefsky.android.aviv.test.app.ui.components.common.TwoPaneScene
-import de.kapschefsky.android.aviv.test.app.ui.components.common.TwoPaneSceneStrategy
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.details.RealEstateDetailsUi
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.listings.RealEstateListingsUi
 import de.kapschefsky.android.aviv.test.app.ui.navigation.RealEstateDetailsNavKey
 import de.kapschefsky.android.aviv.test.app.ui.navigation.RealEstateListingsNavKey
+import de.kapschefsky.android.aviv.test.app.ui.navigation.TwoPaneScene
+import de.kapschefsky.android.aviv.test.app.ui.navigation.TwoPaneSceneStrategy
 import de.kapschefsky.android.aviv.test.app.ui.navigation.showRealEstateDetails
 
 @OptIn(ExperimentalSharedTransitionApi::class, ExperimentalMaterial3Api::class)

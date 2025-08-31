@@ -1,8 +1,10 @@
-package de.kapschefsky.android.aviv.test.app.ui.components.common
+package de.kapschefsky.android.aviv.test.core.ui.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -12,8 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.kapschefsky.android.aviv.test.core.ui.theme.ThemeDarkPreview
+import de.kapschefsky.android.aviv.test.core.ui.theme.ThemeLightPreview
 
 @Composable
 fun IconLabel(
@@ -43,4 +48,14 @@ fun IconLabel(
             style = labelStyle,
         )
     }
+}
+
+@ThemeLightPreview
+@ThemeDarkPreview
+@Composable
+internal fun IconLabelPreview() {
+    IconLabel(
+        icon = Icons.Filled.Phone,
+        label = LoremIpsum(20).values.joinToString(),
+    )
 }

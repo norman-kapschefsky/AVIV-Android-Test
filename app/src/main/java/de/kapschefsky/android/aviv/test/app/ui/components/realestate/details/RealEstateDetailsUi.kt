@@ -28,16 +28,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import de.kapschefsky.android.aviv.test.R
-import de.kapschefsky.android.aviv.test.app.ui.components.common.ErrorInfoBox
-import de.kapschefsky.android.aviv.test.app.ui.components.common.IconLabel
-import de.kapschefsky.android.aviv.test.app.ui.components.common.RemoteImage
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.details.RealEstateDetailsUiState.Error
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.details.RealEstateDetailsUiState.Loading
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.details.RealEstateDetailsUiState.RealEstate
 import de.kapschefsky.android.aviv.test.core.model.ONE
 import de.kapschefsky.android.aviv.test.core.model.RealEstateId
+import de.kapschefsky.android.aviv.test.core.ui.components.ErrorBox
 import de.kapschefsky.android.aviv.test.core.ui.components.Headline
+import de.kapschefsky.android.aviv.test.core.ui.components.IconLabel
 import de.kapschefsky.android.aviv.test.core.ui.components.LoadingIndicator
+import de.kapschefsky.android.aviv.test.core.ui.components.RemoteImage
 
 @Composable
 fun RealEstateDetailsUi(
@@ -64,7 +64,7 @@ fun RealEstateDetailsUi(
         )
 
         when (val state = uiState.value) {
-            Loading -> LoadingIndicator(containerModifier = Modifier.fillMaxSize())
+            Loading -> LoadingIndicator(modifier = Modifier.fillMaxSize())
             is RealEstate ->
                 RealEstateUi(
                     realEstate = state.realEstate,
@@ -72,7 +72,7 @@ fun RealEstateDetailsUi(
                 )
 
             is Error.Loading ->
-                ErrorInfoBox(
+                ErrorBox(
                     modifier = Modifier.padding(horizontal = 16.dp),
                     text = stringResource(R.string.real_estate_details_error_loading_general),
                     buttonLabel = stringResource(R.string.button_error_retry),

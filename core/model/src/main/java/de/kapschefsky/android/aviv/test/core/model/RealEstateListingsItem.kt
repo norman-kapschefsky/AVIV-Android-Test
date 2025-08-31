@@ -4,13 +4,15 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class RealEstateListItem(
+data class RealEstateListingsItem(
     val id: RealEstateId,
     val bedrooms: Int?,
     val city: String,
-    val area: Int,
+    val area: Int?,
+    val areaMeasureUnit: String?,
     val url: String?,
-    val price: Int,
+    val price: Int?,
+    val priceCurrencyCode: String?,
     val professional: String,
     val propertyType: String,
     val offerType: Int,

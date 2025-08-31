@@ -1,10 +1,9 @@
 package de.kapschefsky.android.aviv.test.core.data.api
 
 import arrow.core.Either
-import arrow.core.left
 import de.kapschefsky.android.aviv.test.core.data.api.mapper.RealEstateApiResponseMapper
 import de.kapschefsky.android.aviv.test.core.data.api.model.ApiError
-import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiListItem
+import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateListingsApiItem
 import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiModel
 import de.kapschefsky.android.aviv.test.core.data.repository.RealEstateRepository
 import javax.inject.Inject
@@ -15,10 +14,10 @@ internal class RealEstateRepositoryImpl @Inject constructor(
     private val realEstateApi: RealEstateApi,
     private val realEstateApiResponseMapper: RealEstateApiResponseMapper,
 ): RealEstateRepository {
-    override suspend fun getRealEstateListItems(): Either<ApiError, List<RealEstateApiListItem>> =
+    override suspend fun getRealEstateListItems(): Either<ApiError, List<RealEstateListingsApiItem>> =
        realEstateApi.getRealEstateListings()
            .execute()
-           .let(realEstateApiResponseMapper::mapListingResponse)
+           .let(realEstateApiResponseMapper::mapRealEstateListingResponse)
 
     override suspend fun getRealEstate(id: Int): Either<ApiError, RealEstateApiModel> =
         realEstateApi.getRealEstateListing(id)

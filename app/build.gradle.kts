@@ -53,7 +53,9 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom))
+    listOf(
+        libs.androidx.compose.bom,
+    ).forEach(::platform)
 
     listOf(
         libs.androidx.core.ktx,
@@ -72,14 +74,7 @@ dependencies {
         libs.androidx.navigation3.runtime,
         libs.androidx.navigation3.ui,
         libs.androidx.hilt.navigation.compose,
-        libs.coil.compose,
-        libs.coil.network,
-        libs.androidx.material.icons.extended,
-    ).forEach { library ->
-        implementation(library)
-    }
-
-    ksp(libs.dagger.hilt.compiler)
+    ).forEach(::implementation)
 
     listOf(
         "core:domain",
@@ -89,11 +84,11 @@ dependencies {
         implementation(project(":$moduleName"))
     }
 
+    ksp(libs.dagger.hilt.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 }

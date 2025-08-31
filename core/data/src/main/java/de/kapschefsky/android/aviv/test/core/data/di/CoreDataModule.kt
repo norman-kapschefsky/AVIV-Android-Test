@@ -35,8 +35,7 @@ internal abstract class CoreDataModule {
 
         @Singleton
         @Provides
-        internal fun provideRealEstateApi(
-            retrofit: Retrofit
-        ): RealEstateApi = retrofit.create(RealEstateApi::class.java)
+        internal fun provideRealEstateApi(retrofit: Retrofit): RealEstateApi =
+            retrofit.create(RealEstateApi::class.java)
     }
 }

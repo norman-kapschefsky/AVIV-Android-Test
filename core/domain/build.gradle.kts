@@ -46,11 +46,7 @@ dependencies {
         libs.androidx.appcompat,
         libs.arrow.core,
         libs.dagger.hilt.android,
-    ).forEach { library ->
-        implementation(library)
-    }
-
-    ksp(libs.dagger.hilt.compiler)
+    ).forEach(::implementation)
 
     listOf(
         "core:data",
@@ -58,4 +54,6 @@ dependencies {
     ).forEach { moduleName ->
         implementation(project(":$moduleName"))
     }
+
+    ksp(libs.dagger.hilt.compiler)
 }

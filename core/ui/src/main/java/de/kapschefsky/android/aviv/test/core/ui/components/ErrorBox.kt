@@ -1,4 +1,4 @@
-package de.kapschefsky.android.aviv.test.app.ui.components.common
+package de.kapschefsky.android.aviv.test.core.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -22,7 +22,7 @@ import de.kapschefsky.android.aviv.test.core.ui.theme.ThemeDarkPreview
 import de.kapschefsky.android.aviv.test.core.ui.theme.ThemeLightPreview
 
 @Composable
-fun ErrorInfoBox(
+fun ErrorBox(
     text: String,
     modifier: Modifier = Modifier,
     icon: @Composable () -> Unit = {
@@ -70,8 +70,8 @@ fun ErrorInfoBox(
 @ThemeLightPreview
 @ThemeDarkPreview
 @Composable
-fun ErrorInfoBoxPreview() {
-    ErrorInfoBox(
+internal fun ErrorBoxPreview() {
+    ErrorBox(
         text = LoremIpsum(20).values.joinToString(),
         buttonLabel = LoremIpsum(1).values.first(),
     )
