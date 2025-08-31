@@ -50,5 +50,6 @@ dependencies {
         libs.androidx.core.ktx,
         libs.androidx.appcompat,
         libs.androidx.material3,
+        libs.androidx.ui.tooling.preview,
     ).forEach(::implementation)
 }

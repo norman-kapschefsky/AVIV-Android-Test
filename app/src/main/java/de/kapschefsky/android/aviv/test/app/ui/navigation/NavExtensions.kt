@@ -4,8 +4,14 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation3.runtime.NavKey
 import de.kapschefsky.android.aviv.test.core.model.RealEstateId
 
-fun SnapshotStateList<NavKey>.showRealEstateDetails(id: RealEstateId) {
-    RealEstateDetailsNavKey(id).let { it ->
+fun SnapshotStateList<NavKey>.showRealEstateDetails(
+    id: RealEstateId,
+    headlineText: String,
+) {
+    RealEstateDetailsNavKey(
+        id = id,
+        headlineText = headlineText,
+    ).let { it ->
         if (contains(it)) {
             return@let
         }

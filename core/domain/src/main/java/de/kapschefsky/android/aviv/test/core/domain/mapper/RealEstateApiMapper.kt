@@ -4,6 +4,7 @@ import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiListIte
 import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiModel
 import de.kapschefsky.android.aviv.test.core.model.RealEstate
 import de.kapschefsky.android.aviv.test.core.model.RealEstateListItem
+import java.util.Currency
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,11 +32,18 @@ class RealEstateApiMapper @Inject constructor() {
             bedrooms = estateApiModel.bedrooms,
             city = estateApiModel.city,
             area = estateApiModel.area,
+            areaUnitSymbol = SQUARE_METER_SYMBOL,
             url = estateApiModel.url,
             price = estateApiModel.price,
+            priceCurrencySymbol = Currency.getInstance(CURRENCY_EURO).symbol,
             professional = estateApiModel.professional,
             propertyType = estateApiModel.propertyType,
             offerType = estateApiModel.offerType,
             rooms = estateApiModel.rooms,
         )
+
+    companion object {
+        private const val CURRENCY_EURO = "EUR"
+        private const val SQUARE_METER_SYMBOL = "m²"
+    }
 }

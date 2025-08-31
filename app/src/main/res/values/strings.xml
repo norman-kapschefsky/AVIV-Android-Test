@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">AVIV Android Test</string>
+    <string name="app_name">AVIV Coding Challenge</string>
+    <string name="toolbar_title">AVIV Coding Challenge</string>
+    <string name="real_estate_listings_headline">Real Estate Listings</string>#
+    <string name="real_estate_listings_error_loading_general">An error occurred while loading real estate listings.</string>#
+    <string name="button_error_retry">Retry</string>
+    <string name="real_estate_details_error_loading_general">An error occurred while loading real estate details.</string>#
+    <string name="real_estate_details_value_placeholder">-</string>
+    <string name="real_estate_details_label_price">Price</string>
+    <string name="real_estate_details_label_location">Location</string>
+    <string name="real_estate_details_label_living_area">Living Area</string>
+    <string name="real_estate_details_label_rooms">Rooms</string>
+    <string name="real_estate_details_label_bedrooms">Bedrooms</string>
 </resources>

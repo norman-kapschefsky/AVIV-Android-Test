@@ -10,4 +10,5 @@ object RealEstateListingsNavKey : NavKey
 @Serializable
 data class RealEstateDetailsNavKey(
     val id: RealEstateId,
+    val headlineText: String,
 ) : NavKey

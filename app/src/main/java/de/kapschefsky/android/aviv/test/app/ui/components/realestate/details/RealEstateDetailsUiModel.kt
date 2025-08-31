@@ -6,8 +6,8 @@ data class RealEstateDetailsUiModel(
     val id: RealEstateId,
     val url: String?,
     val city: String,
-    val area: Int,
-    val price: Int,
-    val rooms: Int,
-    val bedrooms: Int,
+    val area: String?,
+    val price: String?,
+    val rooms: Int?,
+    val bedrooms: Int?,
 )

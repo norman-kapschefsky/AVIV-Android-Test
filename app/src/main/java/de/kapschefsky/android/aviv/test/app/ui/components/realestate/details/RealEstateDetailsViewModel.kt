@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.details.RealEstateDetailsUiState.Loading
 import de.kapschefsky.android.aviv.test.core.domain.common.CoroutineDispatcherProvider
 import de.kapschefsky.android.aviv.test.core.domain.usecases.RealEstateUseCases
+import de.kapschefsky.android.aviv.test.core.model.EMPTY
 import de.kapschefsky.android.aviv.test.core.model.RealEstateId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,8 +40,16 @@ class RealEstateDetailsViewModel
                                     id = realEstate.id,
                                     url = realEstate.url,
                                     city = realEstate.city,
-                                    area = realEstate.area,
-                                    price = realEstate.price,
+                                    area =
+                                        listOfNotNull(
+                                            realEstate.area.toString(),
+                                            realEstate.areaUnitSymbol,
+                                        ).joinToString(EMPTY),
+                                    price =
+                                        listOfNotNull(
+                                            realEstate.price.toString(),
+                                            realEstate.priceCurrencySymbol,
+                                        ).joinToString(EMPTY),
                                     rooms = realEstate.rooms,
                                     bedrooms = realEstate.bedrooms,
                                 ),
