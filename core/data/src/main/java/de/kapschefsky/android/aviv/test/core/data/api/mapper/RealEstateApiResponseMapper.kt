@@ -14,7 +14,7 @@ import retrofit2.Response
 @Singleton
 internal class RealEstateApiResponseMapper @Inject constructor() {
 
-    fun mapRealEstateListingResponse(
+    fun mapRealEstateListingsResponse(
         response: Response<RealEstateListingsResponse>
     ): Either<ApiError, List<RealEstateListingsApiItem>> =
         if (response.isSuccessful) {

@@ -101,7 +101,7 @@ private fun ListingsUi(
                         .clickableRipple { onRealEstateItemClicked(item) },
             ) {
                 RemoteImage(
-                    imageUrl = item.url,
+                    imageUrl = item.imageUrl,
                     modifier =
                         Modifier
                             .width(164.dp)
@@ -123,8 +123,8 @@ private fun ListingsUi(
 
                     listOf(
                         Icons.Filled.LocationOn to item.city,
-                        Icons.Filled.Square to item.areaLabel,
-                        Icons.Filled.EuroSymbol to item.priceLabel,
+                        Icons.Filled.Square to item.area,
+                        Icons.Filled.EuroSymbol to item.price,
                         Icons.Filled.MeetingRoom to item.rooms?.toString(),
                         Icons.Filled.Bed to item.bedrooms?.toString(),
                     ).forEach { (vectorImage, label) ->

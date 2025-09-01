@@ -67,7 +67,7 @@ dependencies {
         libs.androidx.material3,
         libs.androidx.material3.windowsizeclass,
         libs.dagger.hilt.android,
-        libs.kotlin.coroutines,
+        libs.kotlin.coroutines.android,
         libs.arrow.core,
         libs.androidx.adaptive.layout,
         libs.androidx.material3.navigation3,
@@ -86,7 +86,13 @@ dependencies {
 
     ksp(libs.dagger.hilt.compiler)
 
-    testImplementation(libs.junit)
+    listOf(
+        libs.junit,
+        libs.mockk,
+        libs.kotlin.coroutines.test,
+        libs.test.turbine,
+    ).forEach(::testImplementation)
+
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -14,10 +14,10 @@ internal class RealEstateRepositoryImpl @Inject constructor(
     private val realEstateApi: RealEstateApi,
     private val realEstateApiResponseMapper: RealEstateApiResponseMapper,
 ): RealEstateRepository {
-    override suspend fun getRealEstateListItems(): Either<ApiError, List<RealEstateListingsApiItem>> =
+    override suspend fun getRealEstateListings(): Either<ApiError, List<RealEstateListingsApiItem>> =
        realEstateApi.getRealEstateListings()
            .execute()
-           .let(realEstateApiResponseMapper::mapRealEstateListingResponse)
+           .let(realEstateApiResponseMapper::mapRealEstateListingsResponse)
 
     override suspend fun getRealEstate(id: Int): Either<ApiError, RealEstateApiModel> =
         realEstateApi.getRealEstateListing(id)

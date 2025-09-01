@@ -9,21 +9,21 @@ import javax.inject.Singleton
 
 @Singleton
 class RealEstateApiMapper @Inject constructor() {
-    fun mapRealEstateListingsApiItemToDomain(apiListItems: List<RealEstateListingsApiItem>): List<RealEstateListingsItem> =
-        apiListItems.map { apiListItem ->
+    fun mapRealEstateListingsApiItemToDomain(apiListingItems: List<RealEstateListingsApiItem>): List<RealEstateListingsItem> =
+        apiListingItems.map { item ->
             RealEstateListingsItem(
-                id = apiListItem.id,
-                bedrooms = apiListItem.bedrooms,
-                city = apiListItem.city,
-                area = apiListItem.area,
+                id = item.id,
+                bedrooms = item.bedrooms,
+                city = item.city,
+                area = item.area,
                 areaMeasureUnit = MEASURE_UNIT_SQUARE_UNIT,
-                url = apiListItem.url,
-                price = apiListItem.price,
+                imageUrl = item.url,
+                price = item.price,
                 priceCurrencyCode = CURRENCY_EURO,
-                professional = apiListItem.professional,
-                propertyType = apiListItem.propertyType,
-                offerType = apiListItem.offerType,
-                rooms = apiListItem.rooms,
+                professional = item.professional,
+                propertyType = item.propertyType,
+                offerType = item.offerType,
+                rooms = item.rooms,
             )
         }
 
@@ -34,7 +34,7 @@ class RealEstateApiMapper @Inject constructor() {
             city = estateApiModel.city,
             area = estateApiModel.area,
             areaMeasureUnit = MEASURE_UNIT_SQUARE_UNIT,
-            url = estateApiModel.url,
+            imageUrl = estateApiModel.url,
             price = estateApiModel.price,
             priceCurrencyCode = CURRENCY_EURO,
             professional = estateApiModel.professional,

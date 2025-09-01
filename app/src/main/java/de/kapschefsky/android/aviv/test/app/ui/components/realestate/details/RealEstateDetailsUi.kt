@@ -98,7 +98,7 @@ private fun RealEstateUi(
                         .height(250.dp)
                         .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
                         .background(MaterialTheme.colorScheme.secondaryContainer),
-                imageUrl = realEstate.url,
+                imageUrl = realEstate.imageUrl,
             )
         }
 

@@ -4,7 +4,7 @@ import de.kapschefsky.android.aviv.test.core.model.RealEstateId
 
 data class RealEstateDetailsUiModel(
     val id: RealEstateId,
-    val url: String?,
+    val imageUrl: String?,
     val city: String,
     val area: String?,
     val price: String?,

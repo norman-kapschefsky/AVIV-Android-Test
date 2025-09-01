@@ -10,7 +10,7 @@ data class RealEstateListingsItem(
     val city: String,
     val area: Int?,
     val areaMeasureUnit: String?,
-    val url: String?,
+    val imageUrl: String?,
     val price: Int?,
     val priceCurrencyCode: String?,
     val professional: String,

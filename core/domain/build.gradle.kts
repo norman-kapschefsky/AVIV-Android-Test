@@ -56,4 +56,10 @@ dependencies {
     }
 
     ksp(libs.dagger.hilt.compiler)
+
+    listOf(
+        libs.junit,
+        libs.mockk,
+        libs.kotlin.coroutines.test,
+    ).forEach(::testImplementation)
 }

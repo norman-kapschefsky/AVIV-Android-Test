@@ -6,7 +6,7 @@ import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateListingsAp
 import de.kapschefsky.android.aviv.test.core.data.api.model.RealEstateApiModel
 
 interface RealEstateRepository {
-    suspend fun getRealEstateListItems(): Either<ApiError, List<RealEstateListingsApiItem>>
+    suspend fun getRealEstateListings(): Either<ApiError, List<RealEstateListingsApiItem>>
 
     suspend fun getRealEstate(id: Int): Either<ApiError, RealEstateApiModel>
 }

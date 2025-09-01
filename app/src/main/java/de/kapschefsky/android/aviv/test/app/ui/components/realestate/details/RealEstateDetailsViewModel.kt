@@ -4,8 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.kapschefsky.android.aviv.test.app.ui.components.realestate.details.RealEstateDetailsUiState.Loading
-import de.kapschefsky.android.aviv.test.app.ui.mapper.AreaUiMapper
-import de.kapschefsky.android.aviv.test.app.ui.mapper.PriceUiMapper
 import de.kapschefsky.android.aviv.test.core.domain.common.CoroutineDispatcherProvider
 import de.kapschefsky.android.aviv.test.core.domain.usecases.RealEstateUseCases
 import de.kapschefsky.android.aviv.test.core.model.RealEstateId
@@ -21,8 +19,7 @@ class RealEstateDetailsViewModel
     constructor(
         private val realEstateUseCases: RealEstateUseCases,
         private val coroutineDispatcherProvider: CoroutineDispatcherProvider,
-        private val priceUiMapper: PriceUiMapper,
-        private val areaUiMapper: AreaUiMapper,
+        private val realEstateDetailsUiModelMapper: RealEstateDetailsUiModelMapper,
     ) : ViewModel() {
         private val _uiState: MutableStateFlow<RealEstateDetailsUiState> = MutableStateFlow(Loading)
         val uiState: StateFlow<RealEstateDetailsUiState> = _uiState
@@ -39,23 +36,9 @@ class RealEstateDetailsViewModel
                         ifLeft = RealEstateDetailsUiState.Error::Loading,
                         ifRight = { realEstate ->
                             RealEstateDetailsUiState.RealEstate(
-                                RealEstateDetailsUiModel(
-                                    id = realEstate.id,
-                                    url = realEstate.url,
-                                    city = realEstate.city,
-                                    area =
-                                        areaUiMapper.mapToDisplayableArea(
-                                            areaValue = realEstate.area,
-                                            areaMeasureUnit = realEstate.areaMeasureUnit,
-                                        ),
-                                    price =
-                                        priceUiMapper.mapToDisplayablePrice(
-                                            priceValue = realEstate.price,
-                                            priceCurrencyCode = realEstate.priceCurrencyCode,
-                                        ),
-                                    rooms = realEstate.rooms,
-                                    bedrooms = realEstate.bedrooms,
-                                ),
+                                realEstate =
+                                    realEstateDetailsUiModelMapper
+                                        .mapRealEstateToDetailsUiModel(realEstate),
                             )
                         },
                     )

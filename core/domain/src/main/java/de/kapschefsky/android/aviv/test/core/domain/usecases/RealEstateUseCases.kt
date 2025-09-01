@@ -18,8 +18,8 @@ class RealEstateUseCases @Inject constructor(
     private val realEstateRepository: RealEstateRepository,
     private val realEstateApiMapper: RealEstateApiMapper,
 ) {
-    suspend fun getRealEstateListItems(): Either<RealEstateError, List<RealEstateListingsItem>> =
-        realEstateRepository.getRealEstateListItems().fold(
+    suspend fun getRealEstateListings(): Either<RealEstateError, List<RealEstateListingsItem>> =
+        realEstateRepository.getRealEstateListings().fold(
             ifLeft = { apiError ->
                 when (apiError) {
                     is ApiError.General -> RealEstateError.ApiError(responseCode = apiError.responseCode)

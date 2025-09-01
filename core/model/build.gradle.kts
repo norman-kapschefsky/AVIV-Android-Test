@@ -35,3 +35,9 @@ android {
         jvmTarget = "11"
     }
 }
+
+dependencies {
+    listOf(
+        libs.junit
+    ).forEach(::testImplementation)
+}

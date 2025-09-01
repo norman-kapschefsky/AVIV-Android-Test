@@ -8,7 +8,7 @@ interface CoroutineDispatcherProvider {
     val io: CoroutineDispatcher
 }
 
-internal val defaultCoroutineDispatcherProvider : CoroutineDispatcherProvider =
+internal val defaultCoroutineDispatcherProvider: CoroutineDispatcherProvider =
     object : CoroutineDispatcherProvider {
         override val main: CoroutineDispatcher
             get() = Dispatchers.Main
@@ -16,3 +16,13 @@ internal val defaultCoroutineDispatcherProvider : CoroutineDispatcherProvider =
         override val io: CoroutineDispatcher
             get() = Dispatchers.IO
     }
+
+val testCoroutineDispatcherProvider: CoroutineDispatcherProvider by lazy {
+    object : CoroutineDispatcherProvider {
+        override val main: CoroutineDispatcher
+            get() = Dispatchers.Unconfined
+
+        override val io: CoroutineDispatcher
+            get() = Dispatchers.Unconfined
+    }
+}
