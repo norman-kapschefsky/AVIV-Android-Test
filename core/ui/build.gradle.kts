@@ -12,6 +12,8 @@ android {
         minSdk = 26
 
         consumerProguardFiles("consumer-rules.pro")
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -58,4 +60,15 @@ dependencies {
         libs.androidx.material.icons.extended,
         libs.coil.compose,
     ).forEach(::api)
+
+    listOf(
+        libs.androidx.ui.test.manifest,
+    ).forEach(::debugImplementation)
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+
+    listOf(
+        libs.androidx.junit,
+        libs.androidx.ui.test.junit4
+    ).forEach(::androidTestImplementation)
 }

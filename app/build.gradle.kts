@@ -93,8 +93,14 @@ dependencies {
         libs.test.turbine,
     ).forEach(::testImplementation)
 
+    listOf(
+        libs.androidx.ui.test.manifest,
+    ).forEach(::debugImplementation)
+
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    listOf(
+        libs.androidx.junit,
+        libs.androidx.ui.test.junit4,
+    ).forEach(::androidTestImplementation)
 }

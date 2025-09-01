@@ -11,6 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import de.kapschefsky.android.aviv.test.core.ui.theme.ThemeDarkPreview
@@ -26,7 +27,7 @@ fun LoadingIndicator(
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(
-            modifier = indicatorModifier,
+            modifier = indicatorModifier.testTag(TAG_LOADING_INDICATOR),
             color = MaterialTheme.colorScheme.primary
         )
     }
@@ -41,3 +42,5 @@ internal fun LoadingIndicatorPreview() {
         indicatorModifier = Modifier.size(48.dp)
     )
 }
+
+const val TAG_LOADING_INDICATOR = "TAG_LOADING_INDICATOR"

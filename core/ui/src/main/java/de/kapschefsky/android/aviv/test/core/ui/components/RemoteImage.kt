@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
@@ -34,7 +35,7 @@ fun RemoteImage(
     },
 ) {
     Box(
-        modifier = modifier,
+        modifier = modifier.testTag(TAG_REMOTE_IMAGE),
         contentAlignment = Alignment.Center,
     ) {
         val painter = rememberAsyncImagePainter(imageUrl)
@@ -64,3 +65,5 @@ fun RemoteImage(
 internal fun RemoteImagePreview() {
     RemoteImage(imageUrl = null)
 }
+
+const val TAG_REMOTE_IMAGE = "TAG_REMOTE_IMAGE"

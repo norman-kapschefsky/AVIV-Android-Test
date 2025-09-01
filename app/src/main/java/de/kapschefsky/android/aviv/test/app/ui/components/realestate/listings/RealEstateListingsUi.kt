@@ -91,57 +91,72 @@ private fun ListingsUi(
             items = items,
             key = { item -> item.id },
         ) { item ->
-            Row(
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .requiredHeight(164.dp)
-                        .clip(RoundedCornerShape(size = 32.dp))
-                        .background(MaterialTheme.colorScheme.surfaceContainer)
-                        .clickableRipple { onRealEstateItemClicked(item) },
-            ) {
-                RemoteImage(
-                    imageUrl = item.imageUrl,
-                    modifier =
-                        Modifier
-                            .width(164.dp)
-                            .fillMaxHeight()
-                            .clip(RoundedCornerShape(topStart = 32.dp, bottomStart = 32.dp))
-                            .background(MaterialTheme.colorScheme.secondaryContainer),
-                )
-
-                Column(
-                    modifier = Modifier.fillMaxHeight().padding(start = 16.dp),
-                    verticalArrangement = Arrangement.Top,
-                ) {
-                    Text(
-                        text = item.name,
-                        style = MaterialTheme.typography.titleLarge,
-                        color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.padding(top = 12.dp, bottom = 4.dp),
-                    )
-
-                    listOf(
-                        Icons.Filled.LocationOn to item.city,
-                        Icons.Filled.Square to item.area,
-                        Icons.Filled.EuroSymbol to item.price,
-                        Icons.Filled.MeetingRoom to item.rooms?.toString(),
-                        Icons.Filled.Bed to item.bedrooms?.toString(),
-                    ).forEach { (vectorImage, label) ->
-                        label?.let {
-                            IconLabel(
-                                modifier = Modifier.padding(top = 2.dp),
-                                icon = vectorImage,
-                                iconSize = 16.dp,
-                                label = it,
-                                labelStyle = MaterialTheme.typography.labelLarge,
-                            )
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
+            ListingsItemUi(
+                item = item,
+                onRealEstateItemClicked = onRealEstateItemClicked,
+            )
         }
     }
+}
+
+@Composable
+private fun ListingsItemUi(
+    item: RealEstateListingsItemUiModel,
+    onRealEstateItemClicked: (RealEstateListingsItemUiModel) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .requiredHeight(164.dp)
+                .clip(RoundedCornerShape(size = 32.dp))
+                .background(MaterialTheme.colorScheme.surfaceContainer)
+                .clickableRipple { onRealEstateItemClicked(item) },
+    ) {
+        RemoteImage(
+            imageUrl = item.imageUrl,
+            modifier =
+                Modifier
+                    .width(164.dp)
+                    .fillMaxHeight()
+                    .clip(RoundedCornerShape(topStart = 32.dp, bottomStart = 32.dp))
+                    .background(MaterialTheme.colorScheme.secondaryContainer),
+        )
+
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxHeight()
+                    .padding(start = 16.dp),
+            verticalArrangement = Arrangement.Top,
+        ) {
+            Text(
+                text = item.name,
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.padding(top = 12.dp, bottom = 4.dp),
+            )
+
+            listOf(
+                Icons.Filled.LocationOn to item.city,
+                Icons.Filled.Square to item.area,
+                Icons.Filled.EuroSymbol to item.price,
+                Icons.Filled.MeetingRoom to item.rooms?.toString(),
+                Icons.Filled.Bed to item.bedrooms?.toString(),
+            ).forEach { (vectorImage, label) ->
+                label?.let {
+                    IconLabel(
+                        modifier = Modifier.padding(top = 2.dp),
+                        icon = vectorImage,
+                        iconSize = 16.dp,
+                        label = it,
+                        labelStyle = MaterialTheme.typography.labelLarge,
+                    )
+                }
+            }
+        }
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
 }

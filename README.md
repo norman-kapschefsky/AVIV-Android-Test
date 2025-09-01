@@ -90,13 +90,29 @@ The project uses the following main libraries/tools:
   - Junit4
   - Mockk
   - Turbine
+  - Compose ui testing
 - Ktlint for code formatting
+
+### Testing
+
+All business logic is unit tested within related modules.
+
+```
+# ./gradlew testDebugUnitTest
+```
+
+There are ui tests in `core:ui` module that tests several components.
+
+```
+# ./gradlew connectedAndroidTest
+```
 
 ## Out of Scope
 
 At then end, I would like tho share the following things, which I haven't tackled in this challenge due to the fact, that it would exceed the scope in my opinion.
 
 - Considering enum types in response objects.
-- *Detekt* implemenation for finding code smells.
+- *Detekt* implementation for finding code smells.
 - Custom gradle plugins to centralizes build.gradle.kts configs for library/app modules.
 - JUnit5 integration for unit testing.
+- No accessibility implementations (like content description for images etc.).

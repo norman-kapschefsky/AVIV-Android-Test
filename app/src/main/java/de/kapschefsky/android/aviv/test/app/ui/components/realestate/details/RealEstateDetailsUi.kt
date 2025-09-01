@@ -113,29 +113,29 @@ private fun RealEstateUi(
 
         listOf(
             Triple(
-                Icons.Filled.LocationOn,
-                R.string.real_estate_details_label_location,
-                realEstate.city,
+                first = Icons.Filled.LocationOn,
+                second = R.string.real_estate_details_label_location,
+                third = realEstate.city,
             ),
             Triple(
-                Icons.Filled.EuroSymbol,
-                R.string.real_estate_details_label_price,
-                realEstate.price,
+                first = Icons.Filled.EuroSymbol,
+                second = R.string.real_estate_details_label_price,
+                third = realEstate.price,
             ),
             Triple(
-                Icons.Filled.Square,
-                R.string.real_estate_details_label_living_area,
-                realEstate.area,
+                first = Icons.Filled.Square,
+                second = R.string.real_estate_details_label_living_area,
+                third = realEstate.area,
             ),
             Triple(
-                Icons.Filled.MeetingRoom,
-                R.string.real_estate_details_label_rooms,
-                realEstate.rooms,
+                first = Icons.Filled.MeetingRoom,
+                second = R.string.real_estate_details_label_rooms,
+                third = realEstate.rooms,
             ),
             Triple(
-                Icons.Filled.Bed,
-                R.string.real_estate_details_label_bedrooms,
-                realEstate.bedrooms,
+                first = Icons.Filled.Bed,
+                second = R.string.real_estate_details_label_bedrooms,
+                third = realEstate.bedrooms,
             ),
         ).forEachIndexed { index, (imageVector, labelResId, value) ->
             item(key = "info_$index") {

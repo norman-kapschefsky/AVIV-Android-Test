@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
@@ -35,7 +36,7 @@ fun IconLabel(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
-            modifier = Modifier.size(iconSize),
+            modifier = Modifier.size(iconSize).testTag(TAG_ICON_LABEL_ICON),
             imageVector = icon,
             contentDescription = null,
             tint = iconTintColor,
@@ -43,7 +44,7 @@ fun IconLabel(
 
         Text(
             text = label,
-            modifier = Modifier.padding(start = 8.dp),
+            modifier = Modifier.padding(start = 8.dp).testTag(TAG_ICON_LABEL_TEXT),
             color = labelColor,
             style = labelStyle,
         )
@@ -59,3 +60,6 @@ internal fun IconLabelPreview() {
         label = LoremIpsum(20).values.joinToString(),
     )
 }
+
+const val TAG_ICON_LABEL_ICON = "TAG_ICON_LABEL_ICON"
+const val TAG_ICON_LABEL_TEXT = "TAG_ICON_LABEL_TEXT"

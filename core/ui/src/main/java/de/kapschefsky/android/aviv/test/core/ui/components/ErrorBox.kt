@@ -16,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import de.kapschefsky.android.aviv.test.core.ui.theme.ThemeDarkPreview
@@ -53,15 +55,21 @@ fun ErrorBox(
                 text = text,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onError,
-                modifier = Modifier.padding(start = 8.dp),
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .testTag(TAG_ERROR_BOX_TEXT),
             )
         }
 
         buttonLabel?.let { label ->
             Button(
                 onClick = onButtonClicked,
+                modifier = Modifier.testTag(TAG_ERROR_BOX_BUTTON)
             ) {
-                Text(text = label)
+                Text(
+                    modifier = Modifier.testTag(TAG_ERROR_BOX_BUTTON_LABEL),
+                    text = label
+                )
             }
         }
     }
@@ -76,3 +84,7 @@ internal fun ErrorBoxPreview() {
         buttonLabel = LoremIpsum(1).values.first(),
     )
 }
+
+const val TAG_ERROR_BOX_TEXT = "TAG_ERROR_BOX_TEXT"
+const val TAG_ERROR_BOX_BUTTON = "TAG_ERROR_BOX_BUTTON"
+const val TAG_ERROR_BOX_BUTTON_LABEL = "TAG_ERROR_BOX_BUTTON_LABEL"
