@@ -42,7 +42,7 @@ PRESENTATION/UI
    DATA
 ```
 
-|Presenation/Ui Module|Description|
+|Presentation/Ui Module|Description|
 |-|-|
 |app| Ui logic for displaying real estate *Listings* and *Details*. |
 |core:ui| Contains *AppTheme* and re-usable ui components in Compose across the project. |
