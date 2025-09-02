@@ -11,7 +11,7 @@ class ConstantsTest {
     }
 
     @Test
-    fun `TWO has related value`() {
+    fun `TWO has related int value`() {
         assertEquals(2, TWO)
     }
 }

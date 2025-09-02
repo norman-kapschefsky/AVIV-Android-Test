@@ -112,7 +112,10 @@ There are ui tests in `core:ui` module that tests several components.
 At then end, I would like tho share the following things, which I haven't tackled in this challenge due to the fact, that it would exceed the scope in my opinion.
 
 - Considering enum types in response objects.
+- Specific error handling while retrieving data, but implementation is ready to do so.
+- Displaying all relevant real estate data information. I just selected a couple to demo the ui.
 - *Detekt* implementation for finding code smells.
 - Custom gradle plugins to centralizes build.gradle.kts configs for library/app modules.
 - JUnit5 integration for unit testing.
-- No accessibility implementations (like content description for images etc.).
+- Accessibility implementations like content description for images etc.
+- CI/CD integration with *GitHub Actions*.

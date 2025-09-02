@@ -107,7 +107,7 @@ private fun ListingsItemUi(
 ) {
     Row(
         modifier =
-            Modifier
+            modifier
                 .fillMaxWidth()
                 .requiredHeight(164.dp)
                 .clip(RoundedCornerShape(size = 32.dp))
